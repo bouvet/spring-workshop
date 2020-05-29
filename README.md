@@ -76,15 +76,12 @@ We will now use the h2 console to view the data stored in our database.
 - password: <let this field be empty>
 
 #### Ex 6
-Create our first unit test - branch `ex-6`
+Create our first unit test and populate test database with data- branch `ex-6`
 
-We will use the test class already generated in in the test folder. 
+We will use the test class already generated in the test folder. 
 Here we will create a test method testing if we can create a movie.
 
-#### Ex 7
-Populate database with test data - branch `ex-7`
-
-We will now create a configuration class in the test folder that will populate our database with some test data.
+We will also create a configuration class in the test folder that will populate our database with some test data.
 
 #### Extra
 - You should also be able to query moves by their age limit.
