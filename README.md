@@ -61,13 +61,13 @@ Now we want to create new Movie objects by doing an HTTP POST request to our API
 
 We will now see that Spring automatically deserializes the JSON object into a Java class.
 
-#### Ex 5
+#### Ex 4
 Make use of a database - branch: `ex-5`
 
 Now we will make use of an H2 database (in-memory-database). We will create an entity class to represent a table in our database.
 We will also make use of the `@Repository` annotation in a class we will use to communicate with our database.
 
-#### Ex 5b
+#### Ex 4b
 View movies in our database - branch: `ex-5b`
 
 We will now use the h2 console to view the data stored in our database. 
@@ -76,7 +76,7 @@ We will now use the h2 console to view the data stored in our database.
 - username: `sa`
 - password: <let this field be empty>
 
-#### Ex 6
+#### Ex 5
 Create our first unit test and populate test database with data- branch `ex-6`
 
 We will use the test class already generated in the test folder. 
