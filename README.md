@@ -28,9 +28,10 @@ We will also create some unit tests to verify our application work as intended.
 #### Ex 1
 Create a Controller - branch: `ex-1`
 
-You should create a Controller class (using the annotation `@RestController`) that contains one method for a GET request. It should only return a String.\
+You should create a Controller class (using the annotation `@RestController`) that contains one method for a GET request. It should only return a String.
 Now run the application an open your web browser. Go to the following URL: [localhost:8080/movies](http://localhost:8080/movies). You should now see the String you wrote in the Controller Class, in your browser window.
 
+Note that the endpoint does not need to be at class level, every method inside a class can have its own endpoint as well.
 
 #### Ex 2
 Create a Service class - branch: `ex-2`
