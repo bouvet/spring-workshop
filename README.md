@@ -28,9 +28,10 @@ We will also create some unit tests to verify our application work as intended.
 #### Ex 1
 Create a Controller - branch: `ex-1`
 
-You should create a Controller class (using the annotation `@RestController`) that contains one method for a GET request. It should only return a String.\
+You should create a Controller class (using the annotation `@RestController`) that contains one method for a GET request. It should only return a String.
 Now run the application an open your web browser. Go to the following URL: [localhost:8080/movies](http://localhost:8080/movies). You should now see the String you wrote in the Controller Class, in your browser window.
 
+Note that the endpoint does not need to be at class level, every method inside a class can have its own endpoint as well.
 
 #### Ex 2
 Create a Service class - branch: `ex-2`
@@ -54,22 +55,19 @@ Now populate the previously created list of strings (Movie titles) with Movie ob
 
 You will now see that by calling your API, that Spring automatically serialize the java objects into JSON objects
 
+Now we want to create new Movie objects by doing an HTTP POST request to our API: 
+- First, we need to create a new method in the Controller class. This should handle a POST request, with a request body in JSON.
+- Lastly we need to create a method in the Service class to add the new Movie into our list of Movies.
+
+We will now see that Spring automatically deserializes the JSON object into a Java class.
 
 #### Ex 4
-Create new Movie - branch: `ex-4`
-
-Now we want to create new Movie objects by doing a POST request to our API. 
-First, we need to create a new method in the Controller class. This should handle a POST request, with a request body in JSON.
-We will now see that Spring automatically deserializes the JSON object into a Java class.
-Lastly we need to create a method in the Service class to add the new Movie into our list of Movies.
-
-#### Ex 5
 Make use of a database - branch: `ex-5`
 
 Now we will make use of an H2 database (in-memory-database). We will create an entity class to represent a table in our database.
 We will also make use of the `@Repository` annotation in a class we will use to communicate with our database.
 
-#### Ex 5b
+#### Ex 4b
 View movies in our database - branch: `ex-5b`
 
 We will now use the h2 console to view the data stored in our database. 
@@ -78,16 +76,13 @@ We will now use the h2 console to view the data stored in our database.
 - username: `sa`
 - password: <let this field be empty>
 
-#### Ex 6
-Create our first unit test - branch `ex-6`
+#### Ex 5
+Create our first unit test and populate test database with data- branch `ex-6`
 
-We will use the test class already generated in in the test folder. 
+We will use the test class already generated in the test folder. 
 Here we will create a test method testing if we can create a movie.
 
-#### Ex 7
-Populate database with test data - branch `ex-7`
-
-We will now create a configuration class in the test folder that will populate our database with some test data.
+We will also create a configuration class in the test folder that will populate our database with some test data.
 
 #### Extra
 - You should also be able to query moves by their age limit.
