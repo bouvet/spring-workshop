@@ -35,9 +35,16 @@ Now run the application an open your web browser. Go to the following URL: [loca
 #### Ex 2
 Create a Service class - branch: `ex-2`
 
-Create a Class annotated with `@Service`. This should have a method that returns a list of Strings (Movie Titles). 
-Make use of the Service class in the Controller, using the `@Autowired` annotation. 
+Create a service Class. This should have a method that returns a list of Strings (Movie Titles). 
+Make use of the Service class in the Controller, using the `@Autowired` annotation.
+For this to work we need to create a `@Bean` of the service Class we just created.
 Your API should now return a list of Movie titles.
+
+
+#### Ex 2-b
+Create a Service class - branch: `ex-2`
+
+annotated with `@Service`
 
 #### Ex 3
 Create a Movie object - branch: `ex-3`
