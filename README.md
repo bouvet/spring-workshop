@@ -83,8 +83,9 @@ Create our first unit test and populate test database with data- branch `ex-5`
 
 We will use the test class already generated in the test folder. 
 Here we will create a test method testing if we can create a movie.
+We will autowire the service class and make use of its methods.
 
-We will also create a configuration class in the test folder that will populate our database with some test data.
+We will also create a configuration (`@Configuration`) class in the test folder that will populate our database with some test data.
 
 #### Extra
 - You should also be able to query moves by their age limit.
