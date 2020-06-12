@@ -58,6 +58,7 @@ You will now see that by calling your API, that Spring automatically serialize t
 
 Now we want to create new Movie objects by doing an HTTP POST request to our API: 
 - First, we need to create a new method in the Controller class. This should handle a POST request, with a request body in JSON.
+- Remember to add the newly created Movie class as a parameter to the method in our RestController. Annotate the parameter with `@RequestBody`
 - Lastly we need to create a method in the Service class to add the new Movie into our list of Movies.
 
 We will now see that Spring automatically deserializes the JSON object into a Java class.
