@@ -37,7 +37,7 @@ Note that the endpoint does not need to be at class level, every method inside a
 #### Ex 2
 Create a Service class - branch: `ex-2`
 
-Create a service Class. This should have a method that returns a list of Strings (Movie Titles). 
+Create a normal java class (herby referred to as our Service class). This should have a method that returns a list of Strings (Movie Titles). 
 Make use of the Service class in the Controller, using the `@Autowired` annotation.
 For this to work we need to create a `@Bean` of the service Class we just created. Put the bean in our `CinemaApplication`-class
 Your API should now return a list of Movie titles.
@@ -46,7 +46,7 @@ Your API should now return a list of Movie titles.
 #### Ex 2-b
 Create a Service class - branch: `ex-2b`
 
-Annotated with `@Service`. Now we can remove the bean created in the `CinemaApplication`-class.
+Annotate the service class with `@Service`. Now we can remove the bean created in the `CinemaApplication`-class.
 
 #### Ex 3
 Create a Movie object - branch: `ex-3`
