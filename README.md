@@ -68,6 +68,8 @@ Make use of a database - branch: `ex-4`
 
 Now we will make use of an H2 database (in-memory-database). We will create an entity class to represent a table in our database.
 We will also make use of the `@Repository` annotation in an interface we will use to communicate with our database.
+Now you can remove the list of movies in the service class, and autowire the new repository interface.
+Use the repository interface to save and query to our database.
 
 #### Ex 4b
 View movies in our database - branch: `ex-4b`
