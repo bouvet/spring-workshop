@@ -28,8 +28,9 @@ We will also create some unit tests to verify our application work as intended.
 #### Ex 1
 Create a Controller - branch: `ex-1`
 
-You should create a Controller class (using the annotation `@RestController`) that contains one method for a GET request. It should only return a String.
-Now run the application an open your web browser. Go to the following URL: [localhost:8080/movies](http://localhost:8080/movies). You should now see the String you wrote in the Controller Class, in your browser window.
+You should create a Controller class (using the annotation `@RestController`) with the following endpoint: `/movies`. 
+Now add one method for a GET request. It should only return a String.
+Now run the application and open your web browser. Go to the following URL: [localhost:8080/movies](http://localhost:8080/movies). You should now see the String you wrote in the Controller Class, in your browser window.
 
 Note that the endpoint does not need to be at class level, every method inside a class can have its own endpoint as well.
 
@@ -38,14 +39,14 @@ Create a Service class - branch: `ex-2`
 
 Create a service Class. This should have a method that returns a list of Strings (Movie Titles). 
 Make use of the Service class in the Controller, using the `@Autowired` annotation.
-For this to work we need to create a `@Bean` of the service Class we just created.
+For this to work we need to create a `@Bean` of the service Class we just created. Put the bean in our `CinemaApplication`-class
 Your API should now return a list of Movie titles.
 
 
 #### Ex 2-b
-Create a Service class - branch: `ex-2`
+Create a Service class - branch: `ex-2b`
 
-annotated with `@Service`
+Annotated with `@Service`. Now we can remove the bean created in the `CinemaApplication`-class.
 
 #### Ex 3
 Create a Movie object - branch: `ex-3`
@@ -62,13 +63,13 @@ Now we want to create new Movie objects by doing an HTTP POST request to our API
 We will now see that Spring automatically deserializes the JSON object into a Java class.
 
 #### Ex 4
-Make use of a database - branch: `ex-5`
+Make use of a database - branch: `ex-4`
 
 Now we will make use of an H2 database (in-memory-database). We will create an entity class to represent a table in our database.
 We will also make use of the `@Repository` annotation in a class we will use to communicate with our database.
 
 #### Ex 4b
-View movies in our database - branch: `ex-5b`
+View movies in our database - branch: `ex-4b`
 
 We will now use the h2 console to view the data stored in our database. 
 - After you have started the application go to the following url [http://localhost:8080/h2-console](http://localhost:8080/h2-console).
@@ -77,7 +78,7 @@ We will now use the h2 console to view the data stored in our database.
 - password: <let this field be empty>
 
 #### Ex 5
-Create our first unit test and populate test database with data- branch `ex-6`
+Create our first unit test and populate test database with data- branch `ex-5`
 
 We will use the test class already generated in the test folder. 
 Here we will create a test method testing if we can create a movie.
