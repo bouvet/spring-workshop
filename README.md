@@ -67,7 +67,7 @@ We will now see that Spring automatically deserializes the JSON object into a Ja
 Make use of a database - branch: `ex-4`
 
 Now we will make use of an H2 database (in-memory-database). We will create an entity class to represent a table in our database.
-We will also make use of the `@Repository` annotation in a class we will use to communicate with our database.
+We will also make use of the `@Repository` annotation in an interface we will use to communicate with our database.
 
 #### Ex 4b
 View movies in our database - branch: `ex-4b`
