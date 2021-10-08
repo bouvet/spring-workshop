@@ -1,22 +1,25 @@
 package com.endre.cinema;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@RunWith(SpringRunner.class)
+
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class CinemaApplicationTests {
+class CinemaApplicationTests {
 
     @Autowired
     private MovieService movieService;
 
     @Test
-    public void testThatMovieHasBeenAddedToDatabase() {
+    void testThatMovieHasBeenAddedToDatabase() {
         var numberOfMoviesInDb = movieService.getMovies().size();
         var movieDto = new MovieDto("Star Wars", 14);
         movieService.createMovie(movieDto);
@@ -24,7 +27,7 @@ public class CinemaApplicationTests {
     }
 
     @Test
-    public void shouldBeTestDataInDatabase(){
+    void shouldBeTestDataInDatabase(){
         assertFalse(movieService.getMovies().isEmpty());
     }
 }
