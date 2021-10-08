@@ -1,16 +1,17 @@
 # Quick introduction to Spring Boot
 
-The goal of this introduction course is to learn the basics of developing REST API´s using Java and SpringBoot.
+The goal of this introduction course is to learn the basics of developing REST APIs using Java and SpringBoot.
 
-### Pre requirements
-- Have IntelliJ Ultimate installed
-- Have Maven installed
-- Some tool to perform API request (e.g. Postman)
-- Have Java 11 installed
+### prerequisite
+- Install IntelliJ Ultimate
+- Install Maven
+- Install some tool to perform API request (e.g. Postman)
+- Install Java 11 (this app is not tested for newer java versions, so compatibility with anything other than java 11 is not guaranteed.)
 
 ### Topics
 - REST API
 - Dependency injection
+- Beans
 - RestController
 - DTO objects
 - JPA
@@ -18,8 +19,8 @@ The goal of this introduction course is to learn the basics of developing REST A
 - JUnit
 
 
-## The end Product
-We will create a simple REST API where the end product should be a service where you can create and view movies displayed at a Cinema.
+### The goal of this workshop
+We will create a simple REST API where the end product should be a service where you can create, and view movies displayed at a Cinema.
 
 We will also create some unit tests to verify our application work as intended.
 
@@ -54,12 +55,12 @@ Create a Movie object - branch: `ex-3`
 Create a Movie class containing two fields: `title` and `ageLimit`. 
 Now populate the previously created list of strings (Movie titles) with Movie objects instead.
 
-You will now see that by calling your API, that Spring automatically serialize the java objects into JSON objects
+You will now see that by calling your API, that Spring automatically serializes the java objects into JSON objects
 
 Now we want to create new Movie objects by doing an HTTP POST request to our API: 
 - First, we need to create a new method in the Controller class. This should handle a POST request, with a request body in JSON.
 - Remember to add the newly created Movie class as a parameter to the method in our RestController. Annotate the parameter with `@RequestBody`
-- Lastly we need to create a method in the Service class to add the new Movie into our list of Movies.
+- Lastly, we need to create a method in the Service class to add the new Movie into our list of Movies.
 
 We will now see that Spring automatically deserializes the JSON object into a Java class.
 
