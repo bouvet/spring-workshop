@@ -1,16 +1,17 @@
 # Quick introduction to Spring Boot
 
-The goal of this introduction course is to learn the basics of developing REST API´s using Java and SpringBoot.
+The goal of this introduction course is to learn the basics of developing REST APIs using Java and SpringBoot.
 
-### Pre requirements
-- Have IntelliJ Ultimate installed
-- Have Maven installed
-- Some tool to perform API request (e.g. Postman)
-- Have Java 11 installed
+### prerequisite
+- Install IntelliJ Ultimate
+- Install Maven
+- Install some tool to perform API request (e.g. Postman)
+- Install Java 11 (this app is not tested for newer java versions, so compatibility with anything other than java 11 is not guaranteed.)
 
 ### Topics
 - REST API
 - Dependency injection
+- Beans
 - RestController
 - DTO objects
 - JPA
@@ -18,8 +19,8 @@ The goal of this introduction course is to learn the basics of developing REST A
 - JUnit
 
 
-## The end Product
-We will create a simple REST API where the end product should be a service where you can create and view movies displayed at a Cinema.
+### The goal of this workshop
+We will create a simple REST API where the end product should be a service where you can create, and view movies displayed at a Cinema.
 
 We will also create some unit tests to verify our application work as intended.
 
@@ -37,7 +38,7 @@ Note that the endpoint does not need to be at class level, every method inside a
 #### Ex 2
 Create a Service class - branch: `ex-2`
 
-Create a service Class. This should have a method that returns a list of Strings (Movie Titles). 
+Create a normal java class (herby referred to as our Service class). This should have a method that returns a list of Strings (Movie Titles). 
 Make use of the Service class in the Controller, using the `@Autowired` annotation.
 For this to work we need to create a `@Bean` of the service Class we just created. Put the bean in our `CinemaApplication`-class
 Your API should now return a list of Movie titles.
@@ -46,7 +47,7 @@ Your API should now return a list of Movie titles.
 #### Ex 2-b
 Create a Service class - branch: `ex-2b`
 
-Annotated with `@Service`. Now we can remove the bean created in the `CinemaApplication`-class.
+Annotate the service class with `@Service`. Now we can remove the bean created in the `CinemaApplication`-class.
 
 #### Ex 3
 Create a Movie object - branch: `ex-3`
@@ -54,11 +55,12 @@ Create a Movie object - branch: `ex-3`
 Create a Movie class containing two fields: `title` and `ageLimit`. 
 Now populate the previously created list of strings (Movie titles) with Movie objects instead.
 
-You will now see that by calling your API, that Spring automatically serialize the java objects into JSON objects
+You will now see that by calling your API, that Spring automatically serializes the java objects into JSON objects
 
 Now we want to create new Movie objects by doing an HTTP POST request to our API: 
 - First, we need to create a new method in the Controller class. This should handle a POST request, with a request body in JSON.
-- Lastly we need to create a method in the Service class to add the new Movie into our list of Movies.
+- Remember to add the newly created Movie class as a parameter to the method in our RestController. Annotate the parameter with `@RequestBody`
+- Lastly, we need to create a method in the Service class to add the new Movie into our list of Movies.
 
 We will now see that Spring automatically deserializes the JSON object into a Java class.
 
@@ -66,7 +68,9 @@ We will now see that Spring automatically deserializes the JSON object into a Ja
 Make use of a database - branch: `ex-4`
 
 Now we will make use of an H2 database (in-memory-database). We will create an entity class to represent a table in our database.
-We will also make use of the `@Repository` annotation in a class we will use to communicate with our database.
+We will also make use of the `@Repository` annotation in an interface we will use to communicate with our database.
+Now you can remove the list of movies in the service class, and autowire the new repository interface.
+Use the repository interface to save and query to our database.
 
 #### Ex 4b
 View movies in our database - branch: `ex-4b`
@@ -82,8 +86,9 @@ Create our first unit test and populate test database with data- branch `ex-5`
 
 We will use the test class already generated in the test folder. 
 Here we will create a test method testing if we can create a movie.
+We will autowire the service class and make use of its methods.
 
-We will also create a configuration class in the test folder that will populate our database with some test data.
+We will also create a configuration (`@Configuration`) class in the test folder that will populate our database with some test data.
 
 #### Extra
 - You should also be able to query moves by their age limit.
