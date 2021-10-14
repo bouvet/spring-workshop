@@ -98,11 +98,13 @@ Now we will make use of an H2 database (in-memory-database).
 View movies in our database - branch: `ex-4b`
 
 We will now use the h2 console to view the data stored in our database. 
-1. After you have started the application go to the following url [http://localhost:8080/h2-console](http://localhost:8080/h2-console).
-2. Replace the JDBC URL with: `jdbc:h2:mem:testdb`
-3. username: `sa`
-4. let the password field be empty.
-5. Hit login and navigate the database.
+1. Restart the application.
+2. Look for a terminal output that says the following: `H2 console available at '/h2-console'. Database available at` and copy the database URL (looking something like this: `jdbc:h2:mem:XXXXX`)
+3. Open the H2 console by going to this url [http://localhost:8080/h2-console](http://localhost:8080/h2-console).
+5. Replace the JDBC URL with the one you copied in step 2.
+6. The username should be: `sa`
+7. Let the password field be empty.
+8. Hit Connect and navigate the database.
 
 ### Ex 5
 Create our first unit test and populate test database with data - branch: `ex-5`
