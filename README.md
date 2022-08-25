@@ -42,7 +42,7 @@ Create a Controller - solution branch: `ex-1`
 
 We should now create our first API endpoint 🙌
 
-1. Create a new Java class which will function as our REST Controller class, using the annotation `@RestController` at the class level with the following endpoint: `/movies`. 
+1. Create a new Java class which will function as our REST Controller class, using the annotations: `@RestController` and `@RequestMapping` at the class level with the following endpoint: `/movies`. 
 2. Now add one method for a GET request using the `@GetMapping` annotation. The method should only return a String.
 3. Run the application and open your web browser. Go to the following URL: [localhost:8080/movies](http://localhost:8080/movies). You should now see the String you wrote in the Controller Class, in your browser window.
 
@@ -57,7 +57,7 @@ Create a Service class using `@Bean` - solution branch: `ex-2`
 2. Now we need a bean (instantiated object of `MovieService`). Go to the `CinemaApplication`-class and here you should create a bean that returns a `MovieService` object.
 3. In the controller class, create a field variable of the `MovieService`. Instantiate the field variable using the `@Autowired` annotation. 
    1. > This way spring will find the bean (instance) of `MovieService` we created in step 2 and inject it here in the controller class.
-4. Inside the `@GetMapping` method in the Controller class, use the `MovieService` field variable to call the method that returns the list of movies, and make the Controller method return that list.
+4. Inside the `@GetMapping` method in the Controller class, use the `MovieService` field variable to call the method that returns the list of movies, and make the Controller method return that list (remember to update the return type).
 5. Your API should now return a list of Movie titles.
 
 
