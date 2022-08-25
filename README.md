@@ -53,7 +53,7 @@ Note that the endpoint paths doesn't need to be set at the class level. You can 
 ### Ex 2
 Create a Service class using `@Bean` - solution branch: `ex-2`
 
-1. Create a normal java class called `MovieService`. This should have a field variable which should contain a list of movie titles (as Strings) and a method that returns the list of movie titles. 
+1. Create a normal java class called `MovieService`. This should have a field variable which should contain a list of movie titles (as Strings) and a method that returns the list of movie titles. I will call this method `getMovies`. 
 2. Now we need a bean (instantiated object of `MovieService`). Go to the `CinemaApplication`-class and here you should create a bean that returns a `MovieService` object.
 3. In the controller class, create a field variable of the `MovieService`. Instantiate the field variable using the `@Autowired` annotation. 
    1. > This way spring will find the bean (instance) of `MovieService` we created in step 2 and inject it here in the controller class.
@@ -74,24 +74,30 @@ Create a Movie DTO ([Data transfer object](https://www.baeldung.com/java-dto-pat
 1. Create a class called MovieDto.
    1. Create two field variables with getters and setters: `title` (String) and `ageLimit` (of type `Integer` not `int` to avoid NullPointerException).
    2. Create a constructor that can accept and set both field variables.
-2. Now populate the previously created list of strings (Movie titles) in `MovieService` with MovieDto objects instead. 
-3. You will now see that by calling your API, that Spring automatically serializes the java objects into JSON objects.
+2. In the `MovieService` class change the return type of the `getMovie` method to a list MovieDto objects.
+3. Also in the `MovieService` class, populate the previously created list of strings (Movie titles) with new MovieDto objects instead. 
+4. You will now see that by calling your API, that Spring automatically serializes the java objects (MovieDto) into JSON objects.
 
-Now we want to create new Movies by doing an HTTP POST request to our API. By doing a POST request a new movie should be added in the list of movies: 
-1. Create a new method in `MovieService` which takes in a MovieDto object as a parameter and adds it into our list of MovieDtos.
-2. Create a new method in the Controller class. This should handle a POST request (you can guess the annotation we need 🙌).
-   1. Add the newly created MovieDto class as a parameter to the new "post-movie-method". Annotate the parameter with `@RequestBody`
-   2. Call the new "create-movie" method in `MovieService` and pass along the MovieDto object.
+Now we want to create new Movies by doing an HTTP POST request to our API. By doing a POST request a new movie should be added in the list of MovieDtos: 
+1. Create a new method in `MovieService` called `addMovie`, which takes in a MovieDto object as a parameter and adds it into our list of MovieDtos.
+2. Create a new method in the Controller class, call it `createMovie`. This should handle a POST request (you can guess the annotation we need 🙌).
+   1. Add the newly created MovieDto class as a parameter to the new `createMovie` method. 
+   2. To make spring recognise the parameter as a http request body, annotate the parameter with `@RequestBody`.
+   3. Call the new `addMovie` method in `MovieService` and pass along the MovieDto object.
 3. Use Postman or Curl to perform a POST request to our API with a JSON object representing a MovieDto object in the request body.
 
 We will now see that Spring automatically deserializes the JSON object into a Java class, and when calling the GET endpoint we will see the new movie object in the response.
 
 ### Ex 4
-Make use of a database - solution branch: `ex-4`
+Make use of a database and create entity classes - solution branch: `ex-4`
 
 Now we will make use of an H2 database (in-memory-database). 
 
-1. Create an [entity](https://www.baeldung.com/jpa-entities#define-entity) class called `Movie` to represent a table in our database. 
+> It's [best practise](https://www.amitph.com/spring-entity-to-dto/) not to use entity objects as request body in controllers, and instead convert from Dto's to Entity objects before sending data to the database.
+> You should also convert entity objects to DTO's before returning them to the user.
+
+
+1. Create an [entity](https://www.baeldung.com/jpa-entities#define-entity) class called `Movie` (this will represent a table in our database). 
    1. The new `Movie` class should contain the same fields as the MovieDto class, but should have one more field variable: `id`.
    2. Create an empty (default) constructor. You can also create a constructor that takes in parameters, but you need an empty constructor anyways. Note that you should never set the value of the `id` field.
 2. The id should be our Primary key (`@Id`), and should be auto generated (`@GeneratedValue`).
@@ -103,9 +109,6 @@ Now we will make use of an H2 database (in-memory-database).
    3. In the create-movie-method, convert the incoming `MoviceDto` object to a `Movie`-entity object (remember not to se the `id` property). Use the repository interface variable to [save](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html) the `Movie`-entity object to the database.
    4. In the get-movie-method, use the repository interface field variable to [query](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html) the database for all movies. Convert the `Movie`-entity objects to `MoviceDto's` and return all the `MoviceDto's`.
 5. The database will now be empty each time you restart your application so test that you can create a new movie by doing a POST and GET request. 
-
-> It's [best practise](https://www.amitph.com/spring-entity-to-dto/) not to use entity objects as request body input in controllers, and instead convert from Dto's to Entity objects before sending data to the database. 
-> You should also convert entity objects to DTO's before returning them to the user.
 
 ### Ex 4b
 View movies in our database - solution branch: `ex-4b`
