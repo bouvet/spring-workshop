@@ -13,8 +13,11 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping
-    public List<MovieDto> getMovies() {
-        return movieService.getMovies();
+    public List<MovieDto> getMovie(@RequestParam(required = false) String title){
+        if (title == null) {
+            return movieService.getMovies();
+        }
+        return movieService.getMovieByTitle(title);
     }
 
     @PostMapping

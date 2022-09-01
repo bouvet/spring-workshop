@@ -27,4 +27,13 @@ public class MovieService {
 
         return movieRepository.save(movieEntity).getId();
     }
+
+    public List<MovieDto> getMovieByTitle(String title) {
+        List<MovieDto> movies = new ArrayList<>();
+        movieRepository.findAllByTitle(title).forEach( movieEntity ->
+                movies.add(new MovieDto(movieEntity.getTitle(), movieEntity.getAgeLimit()))
+        );
+
+        return movies;
+    }
 }
