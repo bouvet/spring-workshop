@@ -103,7 +103,7 @@ Now we will make use of an H2 database (in-memory-database).
 2. The id should be our Primary key (`@Id`), and should be auto generated (`@GeneratedValue`).
 3. Create a new java Interface which should be annotated with the `@Repository` annotation. This will enable us to communicate with our database.
    1. In the Interface extend CrudRepository and use our entity class and primary key type (`Integer`) in combination with CrudRepository. This is to make it possible to communicate with the `Movie` table.
-4. In the `MovieService` class, we will not make use of a database instead of the previously created list of MovieDto's:
+4. In the `MovieService` class, we will now make use of a database instead of the previously created list of MovieDto's:
    1. Remove the list of movies in `MovieService`.
    2. Autowire the new repository interface as a field variable.
    3. In the create-movie-method, convert the incoming `MoviceDto` object to a `Movie`-entity object (remember not to se the `id` property). Use the repository interface variable to [save](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html) the `Movie`-entity object to the database.
